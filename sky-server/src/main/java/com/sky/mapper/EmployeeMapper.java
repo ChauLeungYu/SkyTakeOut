@@ -1,6 +1,8 @@
 package com.sky.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.pagehelper.Page;
+import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,8 +16,16 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
          * @param username
          * @return
          */
+        //TODO 如何修改为MP
         @Select("select * from employee where username = #{username}")
         Employee getByUsername(String username);
+
+        /**
+         * 员工分页查询
+         * @param employeePageQueryDTO
+         * @return
+         */
+        Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 //
 //    /**
 //     * 插入员工数据
